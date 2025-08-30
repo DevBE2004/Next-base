@@ -1,14 +1,22 @@
+import SeoHead from '@/components/layout/SeoHead'
 import { serverFetcher } from '@/lib/api/axios'
 
-//SSR
+// SSR
 export default async function UsersPage() {
   try {
     const data = await serverFetcher({ url: '/user', method: 'GET' })
-    console.log(data)
+
     return (
       <div className='container'>
+        <SeoHead
+          title='Danh sách người dùng'
+          description='Xem danh sách người dùng được tải bằng Server-Side Rendering trong Next.js'
+          keywords='users, danh sách người dùng, Next.js, SSR, hồ sơ người dùng'
+          canonicalUrl='/users'
+          ogImage='/images/users-og.jpg'
+        />
         <h1>Users (SSR)</h1>
-        {data && data.users && data.users.length > 0 ? (
+        {data?.users?.length > 0 ? (
           <ul className='user-list'>
             {data.users.map(user => (
               <li key={user.id} className='user-item'>
@@ -27,6 +35,13 @@ export default async function UsersPage() {
     console.error('Error fetching users:', error)
     return (
       <div className='container'>
+        <SeoHead
+          title='Danh sách người dùng - Lỗi'
+          description='Đã xảy ra lỗi khi tải danh sách người dùng. Vui lòng thử lại sau.'
+          keywords='users, danh sách người dùng, lỗi, Next.js, SSR'
+          canonicalUrl='/users'
+          ogImage='/images/users-og.jpg'
+        />
         <h1>Users (SSR)</h1>
         <div className='error-message'>
           <p>Failed to load users.</p>

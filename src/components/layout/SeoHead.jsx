@@ -3,7 +3,7 @@ import Head from 'next/head'
 const SeoHead = ({ title, description, keywords, canonicalUrl, ogImage }) => {
   const siteName = 'NextJS SEO Optimized'
   const fullTitle = title ? `${title} | ${siteName}` : siteName
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://example.com'
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL
   const fullCanonicalUrl = canonicalUrl ? `${siteUrl}${canonicalUrl}` : siteUrl
   const fullOgImage = ogImage ? `${siteUrl}${ogImage}` : `${siteUrl}/og-image.jpg`
 

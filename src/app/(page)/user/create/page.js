@@ -27,31 +27,20 @@ export default function UserActions() {
     },
   )
 
-  // DELETE - Xóa user
-  const { mutate: deleteUser } = useApi(
-    {
-      method: 'DELETE',
-    },
-    {
-      onSuccess: () => {
-        alert('User deleted successfully!')
-      },
-    },
-  )
-
   const handleCreateUser = () => {
     createUser({ data: { name, email } })
   }
 
-  const handleDeleteUser = userId => {
-    deleteUser({ endpoint: `/users/${userId}` })
-  }
-
   return (
     <div className='bg-gray-50 p-6 rounded-lg'>
-      <h2 className='text-xl font-semibold mb-4'>Quản lý Users</h2>
+      <SeoHead
+        title='Quản lý người dùng'
+        description='Thêm hoặc xóa người dùng với giao diện quản lý thân thiện.'
+        keywords='thêm người dùng'
+        canonicalUrl='/user/create'
+        ogImage='/images/user-actions-og.jpg'
+      />
 
-      {/* Form tạo user mới */}
       <div className='mb-6'>
         <h3 className='font-medium mb-3'>Thêm User mới</h3>
         <div className='flex gap-2 mb-3'>
@@ -77,25 +66,6 @@ export default function UserActions() {
         >
           {isCreating ? 'Đang tạo...' : 'Thêm User'}
         </button>
-      </div>
-
-      {/* Danh sách actions */}
-      <div>
-        <h3 className='font-medium mb-3'>Quick Actions</h3>
-        <div className='flex gap-2'>
-          <button
-            onClick={() => handleDeleteUser(1)}
-            className='bg-red-500 text-white px-3 py-1 rounded text-sm'
-          >
-            Xóa User #1
-          </button>
-          <button
-            onClick={() => handleDeleteUser(2)}
-            className='bg-red-500 text-white px-3 py-1 rounded text-sm'
-          >
-            Xóa User #2
-          </button>
-        </div>
       </div>
     </div>
   )
