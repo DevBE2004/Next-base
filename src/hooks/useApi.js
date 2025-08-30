@@ -1,6 +1,6 @@
 'use client'
 
-import { clientFetcher } from '@/lib/api/api'
+import { clientFetcher } from '@/lib/api/axios'
 import useSWR from 'swr'
 
 // Hàm tạo key duy nhất cho SWR
